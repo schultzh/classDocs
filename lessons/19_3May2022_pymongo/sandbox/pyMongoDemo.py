@@ -27,20 +27,18 @@ def read():
 def insert():
 	""" Function to insert data into mongo db """
 	try:
-		employeeId = input('Enter Employee id :')
-		employeeFirstName = input('Enter FirstName :')
-		employeeLastName = input('Enter LastName :')
-		employeeAge = input('Enter age :')
-		employeeCountry = input('Enter Country :')
+		dogId = input('Enter Dog id :')
+		dogFirstName = input('Enter FirstName :')
+		dogAge = input('Enter age :')
+		dogBreed = input('Enter Breed :')
 
 	# insert the data into the base
 		db.Employee.insert_one(
 		{
-		"id": employeeId,
-		"firstName":employeeFirstName,
-		"lastName":employeeLastName,
-		"age":employeeAge,
-		"country":employeeCountry
+		"id": dogId,
+		"firstName":dogFirstName,
+		"age":dogAge,
+		"breed":dogBreed
 		})
 		print("\nInserted data successfully\n")
 
@@ -55,22 +53,21 @@ def update():
 	print("  Update:")
 	try:
 
-		employeeId = input('  Enter Employee id :')
-		employeeFirstName = input('  Enter FirstName :')
-		employeeLastName = input('  Enter LastName :')
-		employeeAge = input('  Enter age :')
-		employeeCountry = input('  Enter Country :')
+		dogId = input('Enter Dog id :')
+		dogFirstName = input('Enter FirstName :')
+		dogAge = input('Enter age :')
+		dogBreed = input('Enter Breed :')
 
 
 	# update the record with the new information
 		db.Employee.update_one(
-		{"id": employeeId},
+		{"id": dogId},
 		{
 		"$set": {
-		"firstName":employeeFirstName,
-		"lastName":employeeLastName,
-		"age":employeeAge,
-		"country":employeeCountry
+		"firstName":dogFirstName,
+		"age":dogAge,
+		"age":dogAge,
+		"breed":dogBreed
 		}
 		})
 		print("\nRecords updated successfully. \n")
@@ -82,7 +79,7 @@ def update():
 
 # creating connections for communicating with MongoDB
 client = MongoClient('localhost:27017')
-db = client.mongodemo # The name of the collection is mongodemo
+db = client.mongoDogs # The name of the collection is mongodemo
 
 # read the collection
 print("\t [+] Data BEFORE addition")
